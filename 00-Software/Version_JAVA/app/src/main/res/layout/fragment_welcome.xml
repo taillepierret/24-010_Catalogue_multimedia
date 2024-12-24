@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WelcomeFragment"
+    android:gravity="center_horizontal"
+    android:background="#000000">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:textSize="40sp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/message2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:text="Qu'est-ce que tu veux regarder ?" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="50dp"
+        android:textColorHint="#ffffff"
+        android:background="#111111"
+        android:textAlignment="center"
+        android:hint="Clique pour rechercher"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="24dp"
+        android:textSize="14sp"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        android:text="Rechercher" />
+
+</LinearLayout>

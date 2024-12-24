@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="420mm"
+   height="594mm"
+   viewBox="0 0 420 594"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   sodipodi:docname="schema_application"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0179639"
+     inkscape:cx="186.15591"
+     inkscape:cy="466.61771"
+     inkscape:window-width="1874"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke-width:0.264583"
+       id="rect1"
+       width="61.494026"
+       height="105.1205"
+       x="7.5962944"
+       y="7.0865731" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.60012px;fill:#ffffff;stroke-width:0.300009"
+       x="19.2724"
+       y="42.293858"
+       id="text2"
+       transform="scale(0.80682743,1.2394224)"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="fill:#ffffff;stroke-width:0.300009"
+         x="19.2724"
+         y="42.293858">Qu'est ce que tu veux regarder ?</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect2"
+       width="39.451775"
+       height="0.49536374"
+       x="19.131807"
+       y="69.172882" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;stroke-width:0.264583"
+       x="20.980452"
+       y="68.187897"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.264583"
+         x="20.980452"
+         y="68.187897">clique pour rechercher</tspan></text>
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect3"
+       width="42.396675"
+       height="7.1698518"
+       x="17.479879"
+       y="77.140335" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#666666;stroke-width:0.264583"
+       x="30.779318"
+       y="81.316467"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#ffffff;stroke-width:0.264583"
+         x="30.779318"
+         y="81.316467">Catégorie</tspan></text>
+    <rect
+       style="fill:#000000;stroke-width:0.261423"
+       id="rect1-1"
+       width="60.033779"
+       height="105.1205"
+       x="8.5577745"
+       y="114.31912" />
+    <rect
+       style="fill:#666666;stroke-width:0.235697"
+       id="rect3-9"
+       width="33.644531"
+       height="7.1698518"
+       x="12.118649"
+       y="118.15352" />
+    <rect
+       style="fill:#666666;stroke-width:0.165139"
+       id="rect3-9-0"
+       width="16.950773"
+       height="6.9860644"
+       x="47.833759"
+       y="118.23801" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+       x="11.993016"
+       y="122.69939"
+       id="text3-3"><tspan
+         sodipodi:role="line"
+         id="tspan3-7"
+         style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+         x="11.993016"
+         y="122.69939">Nom recherche actuelle</tspan></text>
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4"
+       width="53.219296"
+       height="21.278385"
+       x="11.941625"
+       y="128.37204" />
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4-6"
+       width="53.219296"
+       height="21.278385"
+       x="11.908597"
+       y="151.64409" />
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4-6-4"
+       width="53.219296"
+       height="21.278385"
+       x="11.758855"
+       y="175.08556" />
+    <rect
+       style="fill:#666666;stroke-width:0.25861"
+       id="rect4-6-2"
+       width="53.219296"
+       height="20.328468"
+       x="11.850804"
+       y="199.13608" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+       x="52.467396"
+       y="122.55834"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+         x="52.467396"
+         y="122.55834">Série</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5"
+       width="20.112486"
+       height="19.458462"
+       x="12.735646"
+       y="129.36565" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="18.043934"
+       y="139.9176"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:0.264583"
+         x="18.043934"
+         y="139.9176">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="34.828159"
+       y="131.97455"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:0.264583"
+         x="34.828159"
+         y="131.97455">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="34.828159"
+         y="135.50233"
+         id="tspan8">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="34.828159"
+         y="139.03012"
+         id="tspan9">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5-5"
+       width="20.112486"
+       height="19.458462"
+       x="12.938779"
+       y="152.71144" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="18.247066"
+       y="163.2634"
+       id="text6-3"><tspan
+         sodipodi:role="line"
+         id="tspan6-5"
+         style="stroke-width:0.264583"
+         x="18.247066"
+         y="163.2634">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="35.0313"
+       y="155.32036"
+       id="text7-8"><tspan
+         sodipodi:role="line"
+         id="tspan7-7"
+         style="stroke-width:0.264583"
+         x="35.0313"
+         y="155.32036">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.0313"
+         y="158.84814"
+         id="tspan8-8">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.0313"
+         y="162.37593"
+         id="tspan9-3">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5-0"
+       width="20.112486"
+       height="19.458462"
+       x="12.944867"
+       y="175.87503" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="18.253155"
+       y="186.427"
+       id="text6-6"><tspan
+         sodipodi:role="line"
+         id="tspan6-3"
+         style="stroke-width:0.264583"
+         x="18.253155"
+         y="186.427">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="35.037373"
+       y="178.48395"
+       id="text7-2"><tspan
+         sodipodi:role="line"
+         id="tspan7-73"
+         style="stroke-width:0.264583"
+         x="35.037373"
+         y="178.48395">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.037373"
+         y="182.01173"
+         id="tspan8-0">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.037373"
+         y="185.53952"
+         id="tspan9-1">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.258625"
+       id="rect5-06"
+       width="20.112486"
+       height="18.591934"
+       x="13.13284"
+       y="200.93671" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="18.441128"
+       y="211.48866"
+       id="text6-2"><tspan
+         sodipodi:role="line"
+         id="tspan6-9"
+         style="stroke-width:0.264583"
+         x="18.441128"
+         y="211.48866">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="35.225346"
+       y="203.54561"
+       id="text7-0"><tspan
+         sodipodi:role="line"
+         id="tspan7-71"
+         style="stroke-width:0.264583"
+         x="35.225346"
+         y="203.54561">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.225346"
+         y="207.07339"
+         id="tspan8-81">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="35.225346"
+         y="210.60118"
+         id="tspan9-6">Début synopsis</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9"
+       width="6.9810395"
+       height="20.422716"
+       x="57.644306"
+       y="128.83931" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="59.20911"
+       y="140.45609"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="59.20911"
+         y="140.45609">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9-4"
+       width="6.9810395"
+       height="20.422716"
+       x="57.549931"
+       y="152.15883" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="59.114735"
+       y="163.77559"
+       id="text10-7"><tspan
+         sodipodi:role="line"
+         id="tspan10-3"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="59.114735"
+         y="163.77559">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9-8"
+       width="6.9810395"
+       height="20.422716"
+       x="57.483326"
+       y="175.47887" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="59.048145"
+       y="187.09563"
+       id="text10-8"><tspan
+         sodipodi:role="line"
+         id="tspan10-5"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="59.048145"
+         y="187.09563">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.257215"
+       id="rect9-3"
+       width="6.9810395"
+       height="19.528908"
+       x="57.479176"
+       y="199.91273" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.8296px;fill:#000000;stroke-width:0.258728"
+       x="57.737484"
+       y="215.79611"
+       id="text10-3"
+       transform="scale(1.0226282,0.9778725)"><tspan
+         sodipodi:role="line"
+         id="tspan10-8"
+         style="font-size:4.8296px;fill:#000000;stroke-width:0.258728"
+         x="57.737484"
+         y="215.79611">+</tspan></text>
+    <rect
+       style="fill:#000000;stroke-width:0.261423"
+       id="rect1-1-93"
+       width="60.033779"
+       height="105.1205"
+       x="72.303116"
+       y="114.50213" />
+    <rect
+       style="fill:#666666;stroke-width:0.235697"
+       id="rect3-9-4"
+       width="33.644531"
+       height="7.1698518"
+       x="75.863991"
+       y="118.33652" />
+    <rect
+       style="fill:#666666;stroke-width:0.165139"
+       id="rect3-9-0-7"
+       width="16.950773"
+       height="6.9860644"
+       x="111.5791"
+       y="118.42101" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+       x="75.738358"
+       y="122.88239"
+       id="text3-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan3-7-6"
+         style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+         x="75.738358"
+         y="122.88239">Nom recherche actuelle</tspan></text>
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4-7"
+       width="53.219296"
+       height="21.278385"
+       x="75.686966"
+       y="128.55505" />
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4-6-46"
+       width="53.219296"
+       height="21.278385"
+       x="75.653938"
+       y="151.8271" />
+    <rect
+       style="fill:#666666;stroke-width:0.264583"
+       id="rect4-6-4-4"
+       width="53.219296"
+       height="21.278385"
+       x="75.504196"
+       y="175.26857" />
+    <rect
+       style="fill:#666666;stroke-width:0.25861"
+       id="rect4-6-2-0"
+       width="53.219296"
+       height="20.328468"
+       x="75.596146"
+       y="199.31909" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+       x="116.21274"
+       y="122.74136"
+       id="text5-0"><tspan
+         sodipodi:role="line"
+         id="tspan5-1"
+         style="font-size:2.82222px;fill:#ffffff;stroke-width:0.264583"
+         x="116.21274"
+         y="122.74136">Série</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5-9"
+       width="20.112486"
+       height="19.458462"
+       x="76.480988"
+       y="129.54866" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="81.789276"
+       y="140.10062"
+       id="text6-0"><tspan
+         sodipodi:role="line"
+         id="tspan6-7"
+         style="stroke-width:0.264583"
+         x="81.789276"
+         y="140.10062">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="98.573502"
+       y="132.15756"
+       id="text7-4"><tspan
+         sodipodi:role="line"
+         id="tspan7-56"
+         style="stroke-width:0.264583"
+         x="98.573502"
+         y="132.15756">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.573502"
+         y="135.68535"
+         id="tspan8-88">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.573502"
+         y="139.21313"
+         id="tspan9-72">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5-5-0"
+       width="20.112486"
+       height="19.458462"
+       x="76.68412"
+       y="152.89445" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="81.992409"
+       y="163.44641"
+       id="text6-3-9"><tspan
+         sodipodi:role="line"
+         id="tspan6-5-1"
+         style="stroke-width:0.264583"
+         x="81.992409"
+         y="163.44641">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="98.776642"
+       y="155.50337"
+       id="text7-8-2"><tspan
+         sodipodi:role="line"
+         id="tspan7-7-5"
+         style="stroke-width:0.264583"
+         x="98.776642"
+         y="155.50337">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.776642"
+         y="159.03116"
+         id="tspan8-8-1">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.776642"
+         y="162.55894"
+         id="tspan9-3-9">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect5-0-9"
+       width="20.112486"
+       height="19.458462"
+       x="76.690208"
+       y="176.05804" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="81.998497"
+       y="186.61002"
+       id="text6-6-3"><tspan
+         sodipodi:role="line"
+         id="tspan6-3-53"
+         style="stroke-width:0.264583"
+         x="81.998497"
+         y="186.61002">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="98.782715"
+       y="178.66696"
+       id="text7-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan7-73-8"
+         style="stroke-width:0.264583"
+         x="98.782715"
+         y="178.66696">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.782715"
+         y="182.19475"
+         id="tspan8-0-1">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.782715"
+         y="185.72253"
+         id="tspan9-1-94">Début synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.258625"
+       id="rect5-06-8"
+       width="20.112486"
+       height="18.591934"
+       x="76.878181"
+       y="201.11972" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="82.18647"
+       y="211.67168"
+       id="text6-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan6-9-4"
+         style="stroke-width:0.264583"
+         x="82.18647"
+         y="211.67168">Image</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="98.970688"
+       y="203.72862"
+       id="text7-0-0"><tspan
+         sodipodi:role="line"
+         id="tspan7-71-7"
+         style="stroke-width:0.264583"
+         x="98.970688"
+         y="203.72862">Titre</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.970688"
+         y="207.25642"
+         id="tspan8-81-5">Bande audio</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="98.970688"
+         y="210.78419"
+         id="tspan9-6-26">Début synopsis</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9-1"
+       width="6.9810395"
+       height="20.422716"
+       x="121.38965"
+       y="129.02232" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="122.95445"
+       y="140.6391"
+       id="text10-9"><tspan
+         sodipodi:role="line"
+         id="tspan10-2"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="122.95445"
+         y="140.6391">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9-4-0"
+       width="6.9810395"
+       height="20.422716"
+       x="121.29527"
+       y="152.34184" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="122.86008"
+       y="163.9586"
+       id="text10-7-7"><tspan
+         sodipodi:role="line"
+         id="tspan10-3-1"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="122.86008"
+         y="163.9586">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.263035"
+       id="rect9-8-2"
+       width="6.9810395"
+       height="20.422716"
+       x="121.22867"
+       y="175.66188" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+       x="122.79349"
+       y="187.27864"
+       id="text10-8-7"><tspan
+         sodipodi:role="line"
+         id="tspan10-5-1"
+         style="font-size:4.93889px;fill:#000000;stroke-width:0.264583"
+         x="122.79349"
+         y="187.27864">+</tspan></text>
+    <rect
+       style="fill:#999999;stroke-width:0.257215"
+       id="rect9-3-5"
+       width="6.9810395"
+       height="19.528908"
+       x="121.22452"
+       y="200.09575" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.8296px;fill:#000000;stroke-width:0.258728"
+       x="120.0723"
+       y="215.98325"
+       id="text10-3-1"
+       transform="scale(1.0226282,0.9778725)"><tspan
+         sodipodi:role="line"
+         id="tspan10-8-6"
+         style="font-size:4.8296px;fill:#000000;stroke-width:0.258728"
+         x="120.0723"
+         y="215.98325">+</tspan></text>
+    <rect
+       style="fill:#000000;stroke-width:0.33513"
+       id="rect1-1-9"
+       width="60.033779"
+       height="172.75388"
+       x="8.5668726"
+       y="220.67999" />
+    <rect
+       style="fill:#ffffff;stroke-width:0.684584"
+       id="rect5-7"
+       width="51.129436"
+       height="51.242867"
+       x="12.851716"
+       y="236.38126" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#000000;stroke-width:0.264583"
+       x="33.888165"
+       y="262.41226"
+       id="text6-36"><tspan
+         sodipodi:role="line"
+         id="tspan6-37"
+         style="stroke-width:0.264583"
+         x="33.888165"
+         y="262.41226">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect10"
+       width="46.939659"
+       height="85.110672"
+       x="78.50869"
+       y="125.59481" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#000000;stroke-width:0.264583"
+       x="81.633797"
+       y="132.99655"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="stroke-width:0.264583"
+         x="81.633797"
+         y="132.99655">Nom du contenu</tspan></text>
+    <rect
+       style="fill:#808080;stroke-width:0.264583"
+       id="rect12"
+       width="39.372082"
+       height="8.2201662"
+       x="81.938187"
+       y="138.13397" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#000000;stroke-width:0.264583"
+       x="83.455872"
+       y="143.69568"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="stroke-width:0.264583"
+         x="83.455872"
+         y="143.69568">Bande audio 1</tspan></text>
+    <rect
+       style="fill:#808080;stroke-width:0.264583"
+       id="rect12-1"
+       width="39.372082"
+       height="8.2201662"
+       x="81.955734"
+       y="147.85507" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#000000;stroke-width:0.264583"
+       x="83.473419"
+       y="153.41678"
+       id="text12-8"><tspan
+         sodipodi:role="line"
+         id="tspan12-1"
+         style="stroke-width:0.264583"
+         x="83.473419"
+         y="153.41678">Bande audio 2</tspan></text>
+    <rect
+       style="fill:#808080;stroke-width:0.264583"
+       id="rect12-3"
+       width="39.372082"
+       height="8.2201662"
+       x="81.880066"
+       y="157.40266" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#000000;stroke-width:0.264583"
+       x="83.397751"
+       y="162.96437"
+       id="text12-2"><tspan
+         sodipodi:role="line"
+         id="tspan12-5"
+         style="stroke-width:0.264583"
+         x="83.397751"
+         y="162.96437">Bande audio 3</tspan></text>
+    <rect
+       style="fill:#808080;stroke-width:0.264583"
+       id="rect12-8"
+       width="39.372082"
+       height="8.2201662"
+       x="81.871277"
+       y="167.56586" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#000000;stroke-width:0.264583"
+       x="83.388962"
+       y="173.12756"
+       id="text12-6"><tspan
+         sodipodi:role="line"
+         id="tspan12-9"
+         style="stroke-width:0.264583"
+         x="83.388962"
+         y="173.12756">Bande audio 4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;fill:#ffffff;stroke-width:0.264583"
+       x="17.833096"
+       y="228.55795"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="fill:#ffffff;stroke-width:0.264583"
+         x="17.833096"
+         y="228.55795">Titre du contenu</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82223px;fill:#ffffff;stroke-width:0.264583"
+       x="31.43227"
+       y="294.88562"
+       id="text7-0-9"><tspan
+         sodipodi:role="line"
+         style="fill:#ffffff;stroke-width:0.264583"
+         x="31.43227"
+         y="294.88562"
+         id="tspan9-6-0">Synopsis</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect19"
+       width="52.011757"
+       height="42.252373"
+       x="12.386965"
+       y="296.31723" />
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20"
+       width="15.634109"
+       height="17.097946"
+       x="13.03022"
+       y="341.72632" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="16.184036"
+       y="361.44034"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="16.184036"
+         y="361.44034">Acteur 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="13.275995"
+       y="370.67395"
+       id="text20-6"><tspan
+         sodipodi:role="line"
+         id="tspan20-7"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="13.275995"
+         y="370.67395">Contenu similaire:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="17.561003"
+       y="350.13495"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="fill:#000000;stroke-width:0.264583"
+         x="17.561003"
+         y="350.13495">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20-5"
+       width="15.634109"
+       height="17.097946"
+       x="29.767916"
+       y="341.75568" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="32.92173"
+       y="361.4697"
+       id="text20-8"><tspan
+         sodipodi:role="line"
+         id="tspan20-9"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="32.92173"
+         y="361.4697">Acteur 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="34.298698"
+       y="350.16431"
+       id="text21-2"><tspan
+         sodipodi:role="line"
+         id="tspan21-3"
+         style="fill:#000000;stroke-width:0.264583"
+         x="34.298698"
+         y="350.16431">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20-1"
+       width="15.634109"
+       height="17.097946"
+       x="46.306393"
+       y="341.76453" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="49.460209"
+       y="361.47855"
+       id="text20-3"><tspan
+         sodipodi:role="line"
+         id="tspan20-4"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="49.460209"
+         y="361.47855">Acteur 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="50.837177"
+       y="350.17316"
+       id="text21-8"><tspan
+         sodipodi:role="line"
+         id="tspan21-2"
+         style="fill:#000000;stroke-width:0.264583"
+         x="50.837177"
+         y="350.17316">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.161329"
+       id="rect20-9"
+       width="5.8126249"
+       height="17.097946"
+       x="62.829193"
+       y="341.75009" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="65.983009"
+       y="361.46411"
+       id="text20-85"><tspan
+         sodipodi:role="line"
+         id="tspan20-90"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="65.983009"
+         y="361.46411">Ac</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="67.359978"
+       y="350.15872"
+       id="text21-5"><tspan
+         sodipodi:role="line"
+         id="tspan21-1"
+         style="fill:#000000;stroke-width:0.264583"
+         x="67.359978"
+         y="350.15872">I</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20-4"
+       width="15.634109"
+       height="17.097946"
+       x="13.124599"
+       y="371.94644" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="15.88392"
+       y="391.66046"
+       id="text20-0"><tspan
+         sodipodi:role="line"
+         id="tspan20-3"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="15.88392"
+         y="391.66046">Contenu 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="17.655382"
+       y="380.35507"
+       id="text21-4"><tspan
+         sodipodi:role="line"
+         id="tspan21-8"
+         style="fill:#000000;stroke-width:0.264583"
+         x="17.655382"
+         y="380.35507">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20-5-9"
+       width="15.634109"
+       height="17.097946"
+       x="29.862295"
+       y="371.9758" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="32.644226"
+       y="391.68982"
+       id="text20-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan20-9-4"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="32.644226"
+         y="391.68982">Contenu 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="34.393078"
+       y="380.38443"
+       id="text21-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-0"
+         style="fill:#000000;stroke-width:0.264583"
+         x="34.393078"
+         y="380.38443">Image</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect20-1-5"
+       width="15.634109"
+       height="17.097946"
+       x="46.400772"
+       y="371.98465" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+       x="49.165478"
+       y="391.60104"
+       id="text20-3-8"><tspan
+         sodipodi:role="line"
+         id="tspan20-4-9"
+         style="font-size:2.11667px;stroke-width:0.264583"
+         x="49.165478"
+         y="391.60104">Contenu 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+       x="50.931557"
+       y="380.39328"
+       id="text21-8-3"><tspan
+         sodipodi:role="line"
+         id="tspan21-2-5"
+         style="fill:#000000;stroke-width:0.264583"
+         x="50.931557"
+         y="380.39328">Image</tspan></text>
+  </g>
+</svg>
