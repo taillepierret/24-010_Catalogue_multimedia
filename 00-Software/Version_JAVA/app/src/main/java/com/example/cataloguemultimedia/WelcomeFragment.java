@@ -8,17 +8,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.cataloguemultimedia.databinding.ActivityMainBinding;
+import com.example.cataloguemultimedia.data.content_type;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.example.cataloguemultimedia;
+package com.example.cataloguemultimedia.data;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cataloguemultimedia.R;
+
 import java.util.List;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {

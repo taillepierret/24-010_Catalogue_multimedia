@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,8 +17,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.cataloguemultimedia.data.ContentAdapter;
+import com.example.cataloguemultimedia.data.ContentRepository;
+import com.example.cataloguemultimedia.data.Soundtrack;
+import com.example.cataloguemultimedia.data.content;
+import com.example.cataloguemultimedia.data.content_type;
 import com.example.cataloguemultimedia.databinding.FragmentSearchPageBinding;
-import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,19 +56,16 @@ public class SearchPageFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         // Initialiser le View Binding
         binding = FragmentSearchPageBinding.inflate(inflater, container, false);
 
         // Configurer le RecyclerView
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Simule une liste de résultats
-        List<content> resultList = new ArrayList<>();
-        resultList.add(new content("Titre 1", "Description 1", content_type.MOVIE,
-                new ArrayList<>(Arrays.asList(Soundtrack.VF, Soundtrack.VF, Soundtrack.VOSTFR))));
-        resultList.add(new content("Titre 2", "Description 2", content_type.MOVIE,
-                new ArrayList<>(Arrays.asList(Soundtrack.VOSTFR, Soundtrack.VO))));
+        // Create data list to display
+        List<content> resultList = ContentRepository.getContentList(content_type.valueOf(contentType), searchQuery);
 
         // Configure l'adapter pour le RecyclerView
         ContentAdapter adapter = new ContentAdapter(resultList);

@@ -1,4 +1,4 @@
-package com.example.cataloguemultimedia;
+package com.example.cataloguemultimedia.data;
 
 import androidx.annotation.NonNull;
 
