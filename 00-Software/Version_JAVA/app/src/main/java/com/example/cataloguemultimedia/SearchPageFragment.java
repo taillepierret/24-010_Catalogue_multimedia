@@ -3,66 +3,50 @@ package com.example.cataloguemultimedia;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchPageFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SearchPageFragment extends Fragment
 {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String searchQuery;
+    private String contentType;
+    private FragmentWelcomeBinding binding;
 
     public SearchPageFragment()
     {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchPageFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchPageFragment newInstance(String param1, String param2)
-    {
-        SearchPageFragment fragment = new SearchPageFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        // Récupérer les arguments transmis au fragment
         if (getArguments() != null)
         {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            searchQuery = getArguments().getString("searchContent");
+            contentType = getArguments().getString("selectedContentType");
+            Log.d("SearchPageFragment", "searchQuery: " + searchQuery);
+            Log.d("SearchPageFragment", "contentType: " + contentType);
         }
     }
 
@@ -85,5 +69,78 @@ public class SearchPageFragment extends Fragment
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+    @Override
+    public void onViewCreated(View view,Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Récupérer le Spinner
+        Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
+
+        // Convertir les enums en liste de chaînes
+        String[] contentTypes = new String[content_type.values().length];
+        for (int i = 0; i < content_type.values().length; i++) {
+            contentTypes[i] = content_type.values()[i].name();
+        }
+
+        // Créer un adapter pour le Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                contentTypes
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        contentTypeSpinner.setAdapter(adapter);
+
+        String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
+
+        /*binding.searchButton.setEnabled(false);
+        binding.searchEditText.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                binding.searchButton.setEnabled(!s.toString().isEmpty());
+            }
+        });
+        binding.searchButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // Récupérer les valeurs sélectionnées
+                Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
+                String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
+                String searchContent = binding.searchEditText.getText().toString();
+
+                // Créer un Bundle pour envoyer les données au fragment cible
+                Bundle bundle = new Bundle();
+                bundle.putString("searchContent", searchContent);
+                bundle.putString("selectedContentType", selectedContentType);
+
+                // Créer le nouveau fragment
+                SearchPageFragment searchPageFragment = new SearchPageFragment();
+                searchPageFragment.setArguments(bundle);  // Passer les arguments au fragment
+
+                // Naviguer vers le fragment de recherche
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
+                fragmentTransaction.commit();
+            }
+        });*/
     }
 }

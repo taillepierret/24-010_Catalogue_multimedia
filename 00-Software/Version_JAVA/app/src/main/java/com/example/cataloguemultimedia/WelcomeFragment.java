@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.cataloguemultimedia.databinding.ActivityMainBinding;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
@@ -67,13 +69,32 @@ public class WelcomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
         super.onViewCreated(view, savedInstanceState);
+        Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
+
+        // Convertir les enums en liste de chaînes
+        String[] contentTypes = new String[content_type.values().length];
+        for (int i = 0; i < content_type.values().length; i++) {
+            contentTypes[i] = content_type.values()[i].name();
+        }
+
+        // Créer un adapter pour le Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                contentTypes
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        contentTypeSpinner.setAdapter(adapter);
         binding.searchButton.setEnabled(false);
         binding.searchEditText.addTextChangedListener(new TextWatcher()
         {
@@ -100,12 +121,24 @@ public class WelcomeFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                // naviguer vers le fragment de recherche
-                Log.d("WelcomeFragment", "searchButton clicked");
+                // Récupérer les valeurs sélectionnées
+                Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
+                String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
+                String searchContent = binding.searchEditText.getText().toString();
+
+                // Créer un Bundle pour envoyer les données au fragment cible
+                Bundle bundle = new Bundle();
+                bundle.putString("selectedContentType", selectedContentType);
+                bundle.putString("searchContent", searchContent);
+
+                // Créer le nouveau fragment
+                SearchPageFragment searchPageFragment = new SearchPageFragment();
+                searchPageFragment.setArguments(bundle);
+
+                // Naviguer vers le fragment de recherche
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                SearchPageFragment searchPageFragment = new SearchPageFragment();
-                fragmentTransaction.add(R.id.fragment_container_view, searchPageFragment);
+                fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
                 fragmentTransaction.commit();
             }
         });
