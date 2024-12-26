@@ -2,4 +2,10 @@
     <string name="app_name">Catalogue multimedia</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clique_pour_rechercher">Clique pour rechercher</string>
+    <string name="tape_ta_recherche">tape ta recherche</string>
+    <string name="rechercher">rechercher</string>
+    <string name="titre">Titre</string>
+    <string name="bande_audio">Bande audio</string>
+    <string name="description">Description</string>
 </resources>

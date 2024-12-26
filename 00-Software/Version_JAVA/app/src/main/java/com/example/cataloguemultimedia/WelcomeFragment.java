@@ -3,6 +3,8 @@ package com.example.cataloguemultimedia;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 
 import com.example.cataloguemultimedia.databinding.ActivityMainBinding;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +102,11 @@ public class WelcomeFragment extends Fragment {
             {
                 // naviguer vers le fragment de recherche
                 Log.d("WelcomeFragment", "searchButton clicked");
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SearchPageFragment searchPageFragment = new SearchPageFragment();
+                fragmentTransaction.add(R.id.fragment_container_view, searchPageFragment);
+                fragmentTransaction.commit();
             }
         });
     }

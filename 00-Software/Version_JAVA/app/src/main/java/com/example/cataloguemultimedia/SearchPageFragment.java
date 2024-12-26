@@ -3,10 +3,16 @@ package com.example.cataloguemultimedia;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,7 +70,20 @@ public class SearchPageFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_page, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.searchRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Simule une liste de résultats
+        List<content> resultList = new ArrayList<>();
+        resultList.add(new content ("Titre 1", "Description 1", content_type.MOVIE, new ArrayList<>(Arrays.asList(Soundtrack.VF, Soundtrack.VF, Soundtrack.VOSTFR))));
+        resultList.add(new content ("Titre 2", "Description 2", content_type.MOVIE, new ArrayList<>(Arrays.asList(Soundtrack.VOSTFR, Soundtrack.VO))));
+        // Ajoute d'autres résultats selon tes données
+
+        ContentAdapter adapter = new ContentAdapter(resultList);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
