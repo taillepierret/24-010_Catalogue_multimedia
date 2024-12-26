@@ -2,6 +2,7 @@ package com.example.cataloguemultimedia;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.cataloguemultimedia.databinding.FragmentSearchPageBinding;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class SearchPageFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String searchQuery;
     private String contentType;
-    private FragmentWelcomeBinding binding;
+    private @NonNull FragmentSearchPageBinding binding;
 
     public SearchPageFragment()
     {
@@ -51,24 +53,25 @@ public class SearchPageFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-        View view = inflater.inflate(R.layout.fragment_search_page, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Initialiser le View Binding
+        binding = FragmentSearchPageBinding.inflate(inflater, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.searchRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Configurer le RecyclerView
+        binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Simule une liste de résultats
         List<content> resultList = new ArrayList<>();
-        resultList.add(new content ("Titre 1", "Description 1", content_type.MOVIE, new ArrayList<>(Arrays.asList(Soundtrack.VF, Soundtrack.VF, Soundtrack.VOSTFR))));
-        resultList.add(new content ("Titre 2", "Description 2", content_type.MOVIE, new ArrayList<>(Arrays.asList(Soundtrack.VOSTFR, Soundtrack.VO))));
-        // Ajoute d'autres résultats selon tes données
+        resultList.add(new content("Titre 1", "Description 1", content_type.MOVIE,
+                new ArrayList<>(Arrays.asList(Soundtrack.VF, Soundtrack.VF, Soundtrack.VOSTFR))));
+        resultList.add(new content("Titre 2", "Description 2", content_type.MOVIE,
+                new ArrayList<>(Arrays.asList(Soundtrack.VOSTFR, Soundtrack.VO))));
 
+        // Configure l'adapter pour le RecyclerView
         ContentAdapter adapter = new ContentAdapter(resultList);
-        recyclerView.setAdapter(adapter);
+        binding.searchRecyclerView.setAdapter(adapter);
 
-        return view;
+        return binding.getRoot(); // Retourne la vue root générée par le binding
     }
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState) {
@@ -91,11 +94,12 @@ public class SearchPageFragment extends Fragment
         );
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        contentTypeSpinner.setAdapter(adapter);
+        binding.contentTypeSpinner.setAdapter(adapter);
 
         String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
 
-        /*binding.searchButton.setEnabled(false);
+        binding.searchEditText.setText(searchQuery); //on donne la valeur trouvee precedemment
+        binding.contentTypeSpinner.setSelection(adapter.getPosition(contentType)); //on donne la valeur trouvee precedemment
         binding.searchEditText.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -113,7 +117,7 @@ public class SearchPageFragment extends Fragment
             @Override
             public void afterTextChanged(Editable s)
             {
-                binding.searchButton.setEnabled(!s.toString().isEmpty());
+                
             }
         });
         binding.searchButton.setOnClickListener(new View.OnClickListener()
@@ -141,6 +145,6 @@ public class SearchPageFragment extends Fragment
                 fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
                 fragmentTransaction.commit();
             }
-        });*/
+        });
     }
 }
