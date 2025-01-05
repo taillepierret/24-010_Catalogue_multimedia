@@ -33,6 +33,7 @@ public class SearchPageFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String searchQuery;
     private String contentType;
+    private List<content> resultListFromAPI = new ArrayList<content>();
     private @NonNull FragmentSearchPageBinding binding;
 
     public SearchPageFragment()
@@ -65,7 +66,7 @@ public class SearchPageFragment extends Fragment
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Create data list to display
-        List<content> resultList = ContentRepository.getContentList(content_type.valueOf(contentType), searchQuery);
+        List<content> resultList = resultListFromAPI;
 
         // Configure l'adapter pour le RecyclerView
         ContentAdapter adapter = new ContentAdapter(resultList);
@@ -128,6 +129,7 @@ public class SearchPageFragment extends Fragment
                 // Récupérer les valeurs sélectionnées
                 Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
                 String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
+                content_type type = content_type.valueOf(selectedContentType);
                 String searchContent = binding.searchEditText.getText().toString();
 
                 // Créer un Bundle pour envoyer les données au fragment cible
@@ -144,6 +146,30 @@ public class SearchPageFragment extends Fragment
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
                 fragmentTransaction.commit();
+
+                API_request.fetchData(searchContent, type.toString(), new API_request.ApiCallback() {
+                    @Override
+                    public void onSuccess(String nom, String bandeAudio, String lien, String image, String date) {
+                        // Traiter les données renvoyées ici
+                        Log.d("Success", "Nom: " + nom);
+                        Log.d("Success", "Bande Audio: " + bandeAudio);
+                        Log.d("Success", "Lien: " + lien);
+                        Log.d("Success", "Image: " + image);
+                        Log.d("Success", "Date: " + date);
+                        res
+                    }
+
+                    @Override
+                    public void onFailure(String error) {
+                        // Gérer l'erreur
+                        Log.e("API Error", error);
+                    }
+                    @Override
+                    public ArrayList<content> getContents()
+                    {
+                        return resultListFromAPI;
+                    }
+                });
             }
         });
     }
