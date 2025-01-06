@@ -1,5 +1,6 @@
 package com.example.cataloguemultimedia.data;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,5 +49,12 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             soundtrackTextView = itemView.findViewById(R.id.soundTrackTextView);
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateData(List<content> newData) {
+        this.resultList.clear(); // contentList est la liste interne de l'adapter
+        this.resultList.addAll(newData);
+        notifyDataSetChanged(); // Notifie le RecyclerView que les données ont changé
     }
 }

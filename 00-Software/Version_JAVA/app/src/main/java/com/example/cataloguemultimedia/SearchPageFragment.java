@@ -37,6 +37,7 @@ public class SearchPageFragment extends Fragment
     private String contentType;
     private List<content> resultListFromAPI = new ArrayList<content>();
     private @NonNull FragmentSearchPageBinding binding;
+    private ContentAdapter adapter;
 
     public SearchPageFragment()
     {
@@ -59,114 +60,73 @@ public class SearchPageFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Initialiser le View Binding
         binding = FragmentSearchPageBinding.inflate(inflater, container, false);
 
-        // Configurer le RecyclerView
+        // Configurer le RecyclerView avec un adapter initialisé à vide
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // Create data list to display
-        List<content> resultList = resultListFromAPI;
-
-        // Configure l'adapter pour le RecyclerView
-        ContentAdapter adapter = new ContentAdapter(resultList);
+        adapter = new ContentAdapter(new ArrayList<>()); // Initialisation de l'adapter
         binding.searchRecyclerView.setAdapter(adapter);
 
-        return binding.getRoot(); // Retourne la vue root générée par le binding
+        // Charger les données depuis l'API au démarrage
+        fetchDataFromAPI(searchQuery, contentType);
+
+        return binding.getRoot();
     }
+
     @Override
-    public void onViewCreated(View view,Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Récupérer le Spinner
-        Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
-
-        // Convertir les enums en liste de chaînes
+        // Configurer le Spinner pour les types de contenu
         String[] contentTypes = new String[content_type.values().length];
         for (int i = 0; i < content_type.values().length; i++) {
             contentTypes[i] = content_type.values()[i].name();
         }
 
-        // Créer un adapter pour le Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
                 contentTypes
         );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.contentTypeSpinner.setAdapter(spinnerAdapter);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.contentTypeSpinner.setAdapter(adapter);
+        // Restaurer les valeurs précédemment sélectionnées
+        binding.searchEditText.setText(searchQuery);
+        binding.contentTypeSpinner.setSelection(spinnerAdapter.getPosition(contentType));
 
-        String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
+        // Bouton de recherche
+        binding.searchButton.setOnClickListener(v -> {
+            // Récupérer les valeurs actuelles du champ de recherche et du Spinner
+            String searchContent = binding.searchEditText.getText().toString();
+            String selectedContentType = binding.contentTypeSpinner.getSelectedItem().toString();
+            content_type type = content_type.valueOf(selectedContentType);
 
-        binding.searchEditText.setText(searchQuery); //on donne la valeur trouvee precedemment
-        binding.contentTypeSpinner.setSelection(adapter.getPosition(contentType)); //on donne la valeur trouvee precedemment
-        binding.searchEditText.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s)
-            {
-                
-            }
+            // Recharger les données depuis l'API avec les nouvelles valeurs
+            fetchDataFromAPI(searchContent, type.toString());
         });
-        binding.searchButton.setOnClickListener(new View.OnClickListener()
-        {
+    }
+
+    /**
+     * Méthode pour récupérer les données de l'API et mettre à jour l'adapter.
+     */
+    private void fetchDataFromAPI(String searchContent, String contentType) {
+        API_request.fetchData(searchContent, contentType, new API_request.ApiCallback() {
             @Override
-            public void onClick(View v)
-            {
-                JSONArray jsonArray;
-                // Récupérer les valeurs sélectionnées
-                Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
-                String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
-                content_type type = content_type.valueOf(selectedContentType);
-                String searchContent = binding.searchEditText.getText().toString();
+            public void onSuccess(JSONArray jsonResult) {
+                // Convertir le résultat JSON en liste d'objets `content`
+                List<content> resultList = ContentRepository.parseJSONContent(jsonResult);
 
-                // Créer un Bundle pour envoyer les données au fragment cible
-                Bundle bundle = new Bundle();
-                bundle.putString("searchContent", searchContent);
-                bundle.putString("selectedContentType", selectedContentType);
+                // Mettre à jour l'adapter avec les nouvelles données
+                adapter.updateData(resultList);
+            }
 
-                // Créer le nouveau fragment
-                SearchPageFragment searchPageFragment = new SearchPageFragment();
-                searchPageFragment.setArguments(bundle);  // Passer les arguments au fragment
-
-                // Naviguer vers le fragment de recherche
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
-                fragmentTransaction.commit();
-
-                API_request.fetchData(searchContent, type.toString(), new API_request.ApiCallback() {
-                    @Override
-                    public void onSuccess(JSONArray jsonResult)
-                    {
-                        // Traiter les données
-                        resultListFromAPI = ContentRepository.parseJSONContent(jsonResult);
-                        // Mettre à jour l'adapter
-                        ContentAdapter adapter = new ContentAdapter(resultListFromAPI);
-                        binding.searchRecyclerView.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onFailure(String error) {
-                        // Gérer l'erreur
-                        Log.e("API Error", error);
-                    }
-                });
+            @Override
+            public void onFailure(String error) {
+                // Gérer l'erreur et afficher un message
+                Log.e("API Error", "Erreur lors de la récupération des données : " + error);
             }
         });
     }
