@@ -43,24 +43,30 @@ public class API_request
             BufferedReader reader = null;
 
             try {
-                // Construire l'URL avec les paramètres query et type
-                String urlString = "http://192.168.1.62:5000/search?query=" + params[0] + "&type=" + params[1]; //TODO à mettre dans un fichier de ressources
-                /*URL url = new URL(urlString);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.connect();
+                if (Variable_Environnement.API_is_activated)
+                {
+                    // Construire l'URL avec les paramètres query et type
+                    String urlString = "http://192.168.1.62:5000/search?query=" + params[0] + "&type=" + params[1]; //TODO à mettre dans un fichier de ressources
+                    URL url = new URL(urlString);
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.connect();
 
-                // Lire la réponse
-                reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                String line;
-                StringBuilder response = new StringBuilder();
+                    // Lire la réponse
+                    reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    String line;
+                    StringBuilder response = new StringBuilder();
 
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    result = response.toString();
                 }
-                result = response.toString();*/
-
-                result = FakeContents.Fake_API_result;
+                else
+                {
+                    // Utiliser les données de test
+                    result = FakeContents.Fake_API_result;
+                }
 
                 Log.d("API Result", result);
 

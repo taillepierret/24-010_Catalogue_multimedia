@@ -68,11 +68,11 @@ public class SearchPageFragment extends Fragment
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Create data list to display
-        /*List<content> resultList = resultListFromAPI;
+        List<content> resultList = resultListFromAPI;
 
         // Configure l'adapter pour le RecyclerView
         ContentAdapter adapter = new ContentAdapter(resultList);
-        binding.searchRecyclerView.setAdapter(adapter);*/
+        binding.searchRecyclerView.setAdapter(adapter);
 
         return binding.getRoot(); // Retourne la vue root générée par le binding
     }
