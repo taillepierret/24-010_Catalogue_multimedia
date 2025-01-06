@@ -2,7 +2,8 @@ package com.example.cataloguemultimedia.data;
 
 import androidx.annotation.NonNull;
 
-public enum content_type {
+public enum content_type
+{
     MOVIE("films"),
     SERIES("series"),
     ANIME("animes");

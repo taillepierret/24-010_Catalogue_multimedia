@@ -24,6 +24,8 @@ import com.example.cataloguemultimedia.data.content;
 import com.example.cataloguemultimedia.data.content_type;
 import com.example.cataloguemultimedia.databinding.FragmentSearchPageBinding;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,11 +68,11 @@ public class SearchPageFragment extends Fragment
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Create data list to display
-        List<content> resultList = resultListFromAPI;
+        /*List<content> resultList = resultListFromAPI;
 
         // Configure l'adapter pour le RecyclerView
         ContentAdapter adapter = new ContentAdapter(resultList);
-        binding.searchRecyclerView.setAdapter(adapter);
+        binding.searchRecyclerView.setAdapter(adapter);*/
 
         return binding.getRoot(); // Retourne la vue root générée par le binding
     }
@@ -126,6 +128,7 @@ public class SearchPageFragment extends Fragment
             @Override
             public void onClick(View v)
             {
+                JSONArray jsonArray;
                 // Récupérer les valeurs sélectionnées
                 Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
                 String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
@@ -149,25 +152,19 @@ public class SearchPageFragment extends Fragment
 
                 API_request.fetchData(searchContent, type.toString(), new API_request.ApiCallback() {
                     @Override
-                    public void onSuccess(String nom, String bandeAudio, String lien, String image, String date) {
-                        // Traiter les données renvoyées ici
-                        Log.d("Success", "Nom: " + nom);
-                        Log.d("Success", "Bande Audio: " + bandeAudio);
-                        Log.d("Success", "Lien: " + lien);
-                        Log.d("Success", "Image: " + image);
-                        Log.d("Success", "Date: " + date);
-                        res
+                    public void onSuccess(JSONArray jsonResult)
+                    {
+                        // Traiter les données
+                        resultListFromAPI = ContentRepository.parseJSONContent(jsonResult);
+                        // Mettre à jour l'adapter
+                        ContentAdapter adapter = new ContentAdapter(resultListFromAPI);
+                        binding.searchRecyclerView.setAdapter(adapter);
                     }
 
                     @Override
                     public void onFailure(String error) {
                         // Gérer l'erreur
                         Log.e("API Error", error);
-                    }
-                    @Override
-                    public ArrayList<content> getContents()
-                    {
-                        return resultListFromAPI;
                     }
                 });
             }
