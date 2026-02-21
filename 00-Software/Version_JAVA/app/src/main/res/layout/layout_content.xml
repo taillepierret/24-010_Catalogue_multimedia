@@ -8,19 +8,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     tools:ignore="ExtraText">
+
     <ImageView
         android:id="@+id/myImageView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="2"
         android:contentDescription="description"
         app:layout_constraintWidth_percent="0.3"
         tools:ignore="Suspicious0dp" /> <!-- 30% de la largeur -->
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
         android:orientation="vertical"
         android:padding="8dp"
+        android:layout_gravity="fill_horizontal"
+        app:layout_constraintWidth_percent="0.6"
         android:background="#AAAAAA">
 
 
@@ -49,6 +54,16 @@
             android:textSize="14sp"
             android:textColor="#666666" />
     </LinearLayout>
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:text="+"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"/>
 
 
 
