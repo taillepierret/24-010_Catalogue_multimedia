@@ -18,14 +18,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.cataloguemultimedia.data.ContentAdapter;
-import com.example.cataloguemultimedia.data.ContentRepository;
+import com.example.cataloguemultimedia.data.ContentJsonParser;
 import com.example.cataloguemultimedia.data.Soundtrack;
-import com.example.cataloguemultimedia.data.content;
-import com.example.cataloguemultimedia.data.content_type;
+import com.example.cataloguemultimedia.data.Content;
+import com.example.cataloguemultimedia.data.Content_type;
 import com.example.cataloguemultimedia.databinding.FragmentSearchPageBinding;
 
 import org.json.JSONArray;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,7 @@ public class SearchPageFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String searchQuery;
     private String contentType;
-    private List<content> resultListFromAPI = new ArrayList<content>();
+    private List<Content> resultListFromAPI = new ArrayList<Content>();
     private @NonNull FragmentSearchPageBinding binding;
     private ContentAdapter adapter;
 
@@ -56,6 +57,7 @@ public class SearchPageFragment extends Fragment
             contentType = getArguments().getString("selectedContentType");
             Log.d("SearchPageFragment", "searchQuery: " + searchQuery);
             Log.d("SearchPageFragment", "contentType: " + contentType);
+
         }
     }
 
@@ -80,9 +82,9 @@ public class SearchPageFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         // Configurer le Spinner pour les types de contenu
-        String[] contentTypes = new String[content_type.values().length];
-        for (int i = 0; i < content_type.values().length; i++) {
-            contentTypes[i] = content_type.values()[i].name();
+        String[] contentTypes = new String[Content_type.values().length];
+        for (int i = 0; i < Content_type.values().length; i++) {
+            contentTypes[i] = Content_type.values()[i].name();
         }
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
@@ -102,7 +104,7 @@ public class SearchPageFragment extends Fragment
             // Récupérer les valeurs actuelles du champ de recherche et du Spinner
             String searchContent = binding.searchEditText.getText().toString();
             String selectedContentType = binding.contentTypeSpinner.getSelectedItem().toString();
-            content_type type = content_type.valueOf(selectedContentType);
+            Content_type type = Content_type.valueOf(selectedContentType);
 
             // Recharger les données depuis l'API avec les nouvelles valeurs
             fetchDataFromAPI(searchContent, type.toString());
@@ -112,12 +114,12 @@ public class SearchPageFragment extends Fragment
     /**
      * Méthode pour récupérer les données de l'API et mettre à jour l'adapter.
      */
-    private void fetchDataFromAPI(String searchContent, String contentType) {
-        API_request.fetchData(searchContent, contentType, new API_request.ApiCallback() {
+    private void fetchDataFromAPI(String searchContent, String contentType){
+        API_request.fetchDataFromZt(searchContent, contentType, new API_request.ApiCallback() {
             @Override
             public void onSuccess(JSONArray jsonResult) {
                 // Convertir le résultat JSON en liste d'objets `content`
-                List<content> resultList = ContentRepository.parseJSONContent(jsonResult);
+                List<Content> resultList = ContentJsonParser.parseJSONContent(jsonResult);
 
                 // Mettre à jour l'adapter avec les nouvelles données
                 adapter.updateData(resultList);
@@ -126,6 +128,8 @@ public class SearchPageFragment extends Fragment
             @Override
             public void onFailure(String error) {
                 // Gérer l'erreur et afficher un message
+                List<Content> resultList = new ArrayList<>();
+                adapter.updateData(resultList);
                 Log.e("API Error", "Erreur lors de la récupération des données : " + error);
             }
         });

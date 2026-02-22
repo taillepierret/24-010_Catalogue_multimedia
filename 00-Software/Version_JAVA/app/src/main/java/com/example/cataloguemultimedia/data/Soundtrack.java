@@ -6,7 +6,8 @@ public enum Soundtrack
 {
     VF("VF"),
     VOSTFR("VOSTFR"),
-    VO("VO");
+    VO("VO"),
+    MULTI("MULTI");
 
     private final String displayName;
 

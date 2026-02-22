@@ -14,33 +14,39 @@ import java.util.List;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {
 
-    private final List<content> resultList;
+    private final List<Content> resultList;
+    //private final String ZtLink;
 
-    public ContentAdapter(List<content> resultList) {
+    public ContentAdapter(List<Content> resultList)
+    {
         this.resultList = resultList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_content, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        content item = resultList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position)
+    {
+        Content item = resultList.get(position);
         holder.titleTextView.setText(item.getTitle());
         holder.descriptionTextView.setText(item.getDescription());
         holder.soundtrackTextView.setText(item.getSoundtrack().toString());
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return resultList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder
+    {
         TextView titleTextView, descriptionTextView, soundtrackTextView;
 
         ViewHolder(View itemView) {
@@ -52,9 +58,17 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void updateData(List<content> newData) {
+    public void updateData(List<Content> newData)
+    {
         this.resultList.clear(); // contentList est la liste interne de l'adapter
         this.resultList.addAll(newData);
         notifyDataSetChanged(); // Notifie le RecyclerView que les données ont changé
     }
+    /*@SuppressLint("NotifyDataSetChanged")
+    public void updateZtLink(String ZtLink)
+    {
+        this.resultList.clear(); // contentList est la liste interne de l'adapter
+        this.resultList.addAll(ZtLink);
+        notifyDataSetChanged(); // Notifie le RecyclerView que les données ont changé
+    }*/
 }

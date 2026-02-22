@@ -1,5 +1,7 @@
 package com.example.cataloguemultimedia;
 
+import static com.example.cataloguemultimedia.API_request.getZtLink;
+
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;

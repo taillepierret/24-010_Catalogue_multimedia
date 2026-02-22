@@ -1,5 +1,7 @@
 package com.example.cataloguemultimedia;
 
+import static com.example.cataloguemultimedia.API_request.getZtLink;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,14 +10,22 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.cataloguemultimedia.data.content_type;
+import com.example.cataloguemultimedia.data.Content;
+import com.example.cataloguemultimedia.data.ContentJsonParser;
+import com.example.cataloguemultimedia.data.Content_type;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +69,7 @@ public class WelcomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getZtLinkFromAPI();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -78,9 +89,10 @@ public class WelcomeFragment extends Fragment {
         Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
 
         // Convertir les enums en liste de chaînes
-        String[] contentTypes = new String[content_type.values().length];
-        for (int i = 0; i < content_type.values().length; i++) {
-            contentTypes[i] = content_type.values()[i].name();
+        String[] contentTypes = new String[Content_type.values().length];
+        for (int i = 0; i < Content_type.values().length; i++)
+        {
+            contentTypes[i] = Content_type.values()[i].name();
         }
 
         // Créer un adapter pour le Spinner
@@ -137,6 +149,27 @@ public class WelcomeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
                 fragmentTransaction.commit();
+            }
+        });
+    }
+    private void getZtLinkFromAPI(){
+        API_request.getZtLink(new API_request.ApiGetZtLinkCallback()
+        {
+            @Override
+            public void onSuccess(String ZtLink)
+            {
+                // Mettre à jour l'adapter avec les nouvelles données
+                //adapter.updateData(ZtLink);
+                Log.d("API Result", ZtLink);
+            }
+
+            @Override
+            public void onFailure(String error)
+            {
+                // Gérer l'erreur et afficher un message
+                String ZtLink = "";
+                //adapter.updateData(ZtLink);
+                Log.e("API Error", "Erreur lors de la récupération des données : " + error);
             }
         });
     }

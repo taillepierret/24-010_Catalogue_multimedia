@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class content
+public class Content
 {
     private String title;
     private String description;
-    private content_type type;
-    private ArrayList<String> link_to_image = new ArrayList<String>();
+    private Content_type type;
+    private String link_to_image;
     private ArrayList<String> link_to_download = new ArrayList<String>();
     private ArrayList<String> soundtrack_available = new ArrayList<String>();
     private String date;
 
-    public content(String title, ArrayList<String> link_to_image, ArrayList<String> link_to_download, ArrayList<String> soundtrack_available, String date)
+    public Content(String title, String link_to_image, ArrayList<String> link_to_download, ArrayList<String> soundtrack_available, String date)
     {
         this.title = title;
         this.link_to_image = link_to_image;
@@ -24,7 +24,7 @@ public class content
         this.date = date;
     }
 
-    public content(String title, String description, content_type type, ArrayList<String> link_to_image, ArrayList<String> link_to_download, ArrayList<String> soundtrack_available)
+    public Content(String title, String description, Content_type type, String link_to_image, ArrayList<String> link_to_download, ArrayList<String> soundtrack_available)
     {
         this.title = title;
         this.description = description;
@@ -34,7 +34,7 @@ public class content
         this.soundtrack_available = soundtrack_available;
     }
 
-    public content (String title, String description, content_type type,ArrayList<String> soundtrack_available)
+    public Content (String title, String description, Content_type type,ArrayList<String> soundtrack_available)
     {
         this.title = title;
         this.description = description;
@@ -52,12 +52,12 @@ public class content
         return description;
     }
 
-    public content_type getType()
+    public Content_type getType()
     {
         return type;
     }
 
-    public ArrayList<String> getLinkToImage()
+    public String getLinkToImage()
     {
         return link_to_image;
     }
