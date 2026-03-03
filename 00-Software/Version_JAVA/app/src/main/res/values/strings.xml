@@ -8,7 +8,8 @@
     <string name="titre">Titre</string>
     <string name="bande_audio">Bande audio</string>
     <string name="description">Description</string>
-    <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">Close</string>
+    <string name="navigation_drawer_open">Ouvrir le menu</string>
+    <string name="navigation_drawer_close">Fermer le menu</string>
+
 
 </resources>

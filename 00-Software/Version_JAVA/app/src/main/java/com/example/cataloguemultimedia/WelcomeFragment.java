@@ -133,22 +133,17 @@ public class WelcomeFragment extends Fragment {
                 // Récupérer les valeurs sélectionnées
                 Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
                 String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
-                String searchContent = binding.searchEditText.getText().toString();
 
-                // Créer un Bundle pour envoyer les données au fragment cible
-                Bundle bundle = new Bundle();
-                bundle.putString("selectedContentType", selectedContentType);
-                bundle.putString("searchContent", searchContent);
+                binding.searchButton.setOnClickListener(vv -> {
 
-                // Créer le nouveau fragment
-                SearchPageFragment searchPageFragment = new SearchPageFragment();
-                searchPageFragment.setArguments(bundle);
+                    String searchContent = binding.searchEditText.getText().toString();
 
-                // Naviguer vers le fragment de recherche
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container_view, searchPageFragment);
-                fragmentTransaction.commit();
+                    if (!searchContent.isEmpty()) {
+                        ((MainActivity) requireActivity()).openSearchWithQuery(searchContent);
+                    }
+
+                });
+
             }
         });
     }

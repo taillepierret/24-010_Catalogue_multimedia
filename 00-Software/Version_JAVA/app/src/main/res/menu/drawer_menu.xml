@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Accueil en premier -->
     <item
-        android:id="@+id/nav_welcome"
-        android:title="Accueil" />
+        android:id="@+id/nav_home"
+        android:title="Accueil"
+        android:icon="@android:drawable/ic_menu_view" />
+
     <item
         android:id="@+id/nav_search"
-        android:title="Recherche" />
+        android:title="Recherche"
+        android:icon="@android:drawable/ic_menu_search" />
+
     <item
-        android:id="@+id/nav_config"
-        android:title="Configurations" />
+        android:id="@+id/nav_zt"
+        android:title="Choix du lien ZT"
+        android:icon="@android:drawable/ic_menu_manage" />
+
+    <item
+        android:id="@+id/nav_wishlist"
+        android:title="Liste de souhaits"
+        android:icon="@android:drawable/ic_menu_agenda" />
+
 </menu>

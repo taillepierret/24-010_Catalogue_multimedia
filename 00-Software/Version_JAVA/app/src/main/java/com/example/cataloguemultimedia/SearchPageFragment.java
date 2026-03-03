@@ -39,6 +39,9 @@ public class SearchPageFragment extends Fragment
     private List<Content> resultListFromAPI = new ArrayList<Content>();
     private @NonNull FragmentSearchPageBinding binding;
     private ContentAdapter adapter;
+    private String lastSearchQuery;
+
+    private String pendingQuery;
 
     public SearchPageFragment()
     {
@@ -72,7 +75,10 @@ public class SearchPageFragment extends Fragment
         binding.searchRecyclerView.setAdapter(adapter);
 
         // Charger les données depuis l'API au démarrage
-        fetchDataFromAPI(searchQuery, contentType);
+        if (searchQuery != null && contentType != null) {
+            fetchDataFromAPI(searchQuery, contentType);
+        }
+
 
         return binding.getRoot();
     }
@@ -80,6 +86,11 @@ public class SearchPageFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        /*if (pendingQuery != null) {
+            performSearch(pendingQuery);
+            pendingQuery = null;
+        }*/
 
         // Configurer le Spinner pour les types de contenu
         String[] contentTypes = new String[Content_type.values().length];
@@ -115,23 +126,54 @@ public class SearchPageFragment extends Fragment
      * Méthode pour récupérer les données de l'API et mettre à jour l'adapter.
      */
     private void fetchDataFromAPI(String searchContent, String contentType){
+
+        binding.loadingProgressBar.setVisibility(View.VISIBLE);
+        lastSearchQuery = searchContent;
         API_request.fetchDataFromZt(searchContent, contentType, new API_request.ApiCallback() {
+
             @Override
             public void onSuccess(JSONArray jsonResult) {
-                // Convertir le résultat JSON en liste d'objets `content`
-                List<Content> resultList = ContentJsonParser.parseJSONContent(jsonResult);
-
-                // Mettre à jour l'adapter avec les nouvelles données
-                adapter.updateData(resultList);
+                if (!isAdded() || binding == null) return;
+                requireActivity().runOnUiThread(() -> {
+                    List<Content> resultList = ContentJsonParser.parseJSONContent(jsonResult);
+                    adapter.updateData(resultList);
+                    binding.loadingProgressBar.setVisibility(View.GONE);
+                });
             }
 
             @Override
             public void onFailure(String error) {
-                // Gérer l'erreur et afficher un message
-                List<Content> resultList = new ArrayList<>();
-                adapter.updateData(resultList);
-                Log.e("API Error", "Erreur lors de la récupération des données : " + error);
+                if (!isAdded() || binding == null) return;
+                requireActivity().runOnUiThread(() -> {
+                    adapter.updateData(new ArrayList<>());
+                    binding.loadingProgressBar.setVisibility(View.GONE);
+                });
+
+                Log.e("API Error", error);
             }
         });
     }
+
+    public void setPendingQuery(String query) {
+        this.pendingQuery = query;
+    }
+
+    public void performSearchFromOutside(String query) {
+
+        if (!isAdded() || binding == null) return;
+
+        binding.searchEditText.setText(query);
+
+        // On récupère le type seulement s’il existe
+        String selectedType = "ALL"; // valeur par défaut sûre
+
+        if (binding.contentTypeSpinner.getSelectedItem() != null) {
+            selectedType = binding.contentTypeSpinner.getSelectedItem().toString();
+        }
+
+        fetchDataFromAPI(query, selectedType);
+    }
+
+
+
 }
