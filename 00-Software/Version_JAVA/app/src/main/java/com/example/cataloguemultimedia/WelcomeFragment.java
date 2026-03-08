@@ -83,70 +83,44 @@ public class WelcomeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
 
-        // Convertir les enums en liste de chaînes
+        // 1) Spinner
         String[] contentTypes = new String[Content_type.values().length];
-        for (int i = 0; i < Content_type.values().length; i++)
-        {
+        for (int i = 0; i < Content_type.values().length; i++) {
             contentTypes[i] = Content_type.values()[i].name();
         }
 
-        // Créer un adapter pour le Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
                 contentTypes
         );
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        contentTypeSpinner.setAdapter(adapter);
+
+        // 2) Bouton activé seulement si texte
         binding.searchButton.setEnabled(false);
-        binding.searchEditText.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
-
-            }
+        binding.searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s)
-            {
-                binding.searchButton.setEnabled(!s.toString().isEmpty());
+            public void afterTextChanged(Editable s) {
+                binding.searchButton.setEnabled(s != null && !s.toString().trim().isEmpty());
             }
         });
-        binding.searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                // Récupérer les valeurs sélectionnées
-                Spinner contentTypeSpinner = view.findViewById(R.id.contentTypeSpinner);
-                String selectedContentType = contentTypeSpinner.getSelectedItem().toString();
 
-                binding.searchButton.setOnClickListener(vv -> {
-
-                    String searchContent = binding.searchEditText.getText().toString();
-
-                    if (!searchContent.isEmpty()) {
-                        ((MainActivity) requireActivity()).openSearchWithQuery(searchContent);
-                    }
-
-                });
-
+        // 3) Click (une seule fois, pas de setOnClickListener dans setOnClickListener)
+        binding.searchButton.setOnClickListener(v -> {
+            String searchContent = binding.searchEditText.getText().toString().trim();
+            if (!searchContent.isEmpty()) {
+                ((MainActivity) requireActivity()).openSearchWithQuery(searchContent);
             }
         });
     }
+
     private void getZtLinkFromAPI(){
         API_request.getZtLink(new API_request.ApiGetZtLinkCallback()
         {
@@ -168,4 +142,10 @@ public class WelcomeFragment extends Fragment {
             }
         });
     }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
+

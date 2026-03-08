@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical"
     tools:ignore="ExtraText">
 
     <ImageView
         android:id="@+id/myImageView"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="110dp"
         android:layout_weight="2"
-        android:contentDescription="description"
-        app:layout_constraintWidth_percent="0.3"
-        tools:ignore="Suspicious0dp" /> <!-- 30% de la largeur -->
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/description"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="6"
         android:orientation="vertical"
+        android:layout_gravity="center_vertical"
         android:padding="8dp"
-        android:layout_gravity="fill_horizontal"
-        app:layout_constraintWidth_percent="0.6"
         android:background="#AAAAAA">
-
-
 
         <TextView
             android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/titre"
             android:textSize="18sp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/soundTrackTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bande_audio"
             android:textSize="14sp"
@@ -48,23 +45,24 @@
 
         <TextView
             android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:textSize="14sp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:maxLines="4"
+            android:ellipsize="end" />
     </LinearLayout>
 
-
     <Button
+        android:id="@+id/addToWishlistButton"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:minHeight="48dp"
         android:text="+"
+        android:layout_gravity="center_vertical"
         android:textSize="18sp"
-        android:textColor="#000000"
-        android:gravity="center"/>
-
-
+        android:textColor="#000000" />
 
 </LinearLayout>

@@ -2,6 +2,9 @@ package com.example.cataloguemultimedia;
 
 import android.os.Bundle;
 
+import androidx.lifecycle.ViewModelProvider;
+import com.example.cataloguemultimedia.viewmodel.WishlistViewModel;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -30,6 +33,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.example.cataloguemultimedia.R;
 
 public class SearchPageFragment extends Fragment
 {
@@ -71,7 +76,13 @@ public class SearchPageFragment extends Fragment
 
         // Configurer le RecyclerView avec un adapter initialisé à vide
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ContentAdapter(new ArrayList<>()); // Initialisation de l'adapter
+        adapter = new ContentAdapter(content -> {
+            // action quand on clique sur "+"
+            // ex: ajout à la wishlist
+        });
+        binding.searchRecyclerView.setAdapter(adapter);
+
+        binding.searchRecyclerView.setAdapter(adapter);
         binding.searchRecyclerView.setAdapter(adapter);
 
         // Charger les données depuis l'API au démarrage
@@ -120,6 +131,13 @@ public class SearchPageFragment extends Fragment
             // Recharger les données depuis l'API avec les nouvelles valeurs
             fetchDataFromAPI(searchContent, type.toString());
         });
+        WishlistViewModel wishlistViewModel = new ViewModelProvider(requireActivity())
+                .get(WishlistViewModel.class);
+
+        adapter = new ContentAdapter(content -> {
+            wishlistViewModel.add(content);
+        });
+        binding.searchRecyclerView.setAdapter(adapter);
     }
 
     /**

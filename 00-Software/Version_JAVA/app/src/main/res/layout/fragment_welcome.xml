@@ -3,54 +3,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:background="#000000"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:weightSum="3">
 
-    <!-- Titre -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="40sp"
-        android:textColor="#673AB7"
-        android:textStyle="bold"
-        android:layout_marginBottom="60dp" />
+    <!-- Espace haut = 1/3 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <!-- Bloc recherche -->
+    <!-- Contenu -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center_horizontal">
 
-        <Spinner
-            android:id="@+id/contentTypeSpinner"
+        <!-- Titre -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp" />
+            android:text="@string/app_name"
+            android:textSize="40sp"
+            android:textColor="#673AB7"
+            android:textStyle="bold"
+            android:layout_marginBottom="60dp" />
 
-        <EditText
-            android:id="@+id/searchEditText"
+        <!-- Bloc recherche -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#111111"
-            android:hint="Qu'est-ce que tu veux regarder ?"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA"
-            android:paddingHorizontal="20dp"
-            android:gravity="center" />
-
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rechercher"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#673AB7"
-            android:textColor="#000000"
-            android:paddingHorizontal="32dp" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="#111111"
+                android:hint="Qu'est-ce que tu veux regarder ?"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Rechercher"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#673AB7"
+                android:textColor="#000000"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Espace bas = 2/3 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
 
 </LinearLayout>
