@@ -14,6 +14,7 @@ public class Content
     private ArrayList<String> link_to_download = new ArrayList<String>();
     private ArrayList<String> soundtrack_available = new ArrayList<String>();
     private String date;
+    private String selectedAudio; // ex: "VF", "VOSTFR"
 
     public Content(String title, String link_to_image, ArrayList<String> link_to_download, ArrayList<String> soundtrack_available, String date)
     {
@@ -89,4 +90,31 @@ public class Content
         }
         return jsonObject;
     }
+    public String getSelectedAudio()
+    {
+        return selectedAudio;
+    }
+    public void setSelectedAudio(String selectedAudio)
+    {
+        this.selectedAudio = selectedAudio;
+    }
+    public Content copy()
+    {
+        Content c = new Content(title, link_to_image, link_to_download, soundtrack_available, date);
+        c.setSelectedAudio(this.selectedAudio);
+        return c;
+    }
+
+    public String GetDate()
+    {
+        return date;
+    }
+
+    public void SetDate(String date_to_set)
+    {
+        date = date_to_set;
+    }
+
+
+
 }

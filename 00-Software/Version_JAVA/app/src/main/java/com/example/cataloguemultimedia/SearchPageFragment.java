@@ -41,12 +41,8 @@ public class SearchPageFragment extends Fragment
     // TODO: Rename and change types of parameters
     private String searchQuery;
     private String contentType;
-    private List<Content> resultListFromAPI = new ArrayList<Content>();
     private @NonNull FragmentSearchPageBinding binding;
     private ContentAdapter adapter;
-    private String lastSearchQuery;
-
-    private String pendingQuery;
 
     public SearchPageFragment()
     {
@@ -98,11 +94,6 @@ public class SearchPageFragment extends Fragment
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*if (pendingQuery != null) {
-            performSearch(pendingQuery);
-            pendingQuery = null;
-        }*/
-
         // Configurer le Spinner pour les types de contenu
         String[] contentTypes = new String[Content_type.values().length];
         for (int i = 0; i < Content_type.values().length; i++) {
@@ -131,13 +122,23 @@ public class SearchPageFragment extends Fragment
             // Recharger les données depuis l'API avec les nouvelles valeurs
             fetchDataFromAPI(searchContent, type.toString());
         });
-        WishlistViewModel wishlistViewModel = new ViewModelProvider(requireActivity())
+        /*WishlistViewModel wishlistViewModel = new ViewModelProvider(requireActivity())
                 .get(WishlistViewModel.class);
 
         adapter = new ContentAdapter(content -> {
             wishlistViewModel.add(content);
-        });
+        });*/
+
+
         binding.searchRecyclerView.setAdapter(adapter);
+
+        WishlistViewModel wishlistViewModel =
+                new ViewModelProvider(requireActivity()).get(WishlistViewModel.class);
+
+        adapter = new ContentAdapter(content -> {
+            showAudioChoiceDialog(content, wishlistViewModel);
+        });
+
     }
 
     /**
@@ -146,7 +147,6 @@ public class SearchPageFragment extends Fragment
     private void fetchDataFromAPI(String searchContent, String contentType){
 
         binding.loadingProgressBar.setVisibility(View.VISIBLE);
-        lastSearchQuery = searchContent;
         API_request.fetchDataFromZt(searchContent, contentType, new API_request.ApiCallback() {
 
             @Override
@@ -172,12 +172,8 @@ public class SearchPageFragment extends Fragment
         });
     }
 
-    public void setPendingQuery(String query) {
-        this.pendingQuery = query;
-    }
-
-    public void performSearchFromOutside(String query) {
-
+    public void performSearchFromOutside(String query)
+    {
         if (!isAdded() || binding == null) return;
 
         binding.searchEditText.setText(query);
@@ -191,6 +187,62 @@ public class SearchPageFragment extends Fragment
 
         fetchDataFromAPI(query, selectedType);
     }
+
+    private void showAudioChoiceDialog(Content item, WishlistViewModel wishlistViewModel) {
+
+        ArrayList<String> audios = item.getSoundtrack(); // ton getter existe déjà
+
+        if (audios == null || audios.isEmpty()) {
+            android.widget.Toast.makeText(requireContext(),
+                    "Aucune version audio disponible",
+                    android.widget.Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Si une seule version -> on ajoute direct (pas besoin de demander)
+        if (audios.size() == 1) {
+            addToWishlist(item, audios.get(0), wishlistViewModel);
+            return;
+        }
+
+        final String[] items = audios.toArray(new String[0]);
+        final int[] selectedIndex = {0};
+
+        new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle("Quelle version audio ?")
+                .setSingleChoiceItems(items, 0, (dialog, which) -> selectedIndex[0] = which)
+                .setNegativeButton("Annuler", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Ajouter", (dialog, which) -> {
+                    String chosenAudio = items[selectedIndex[0]];
+                    addToWishlist(item, chosenAudio, wishlistViewModel);
+                })
+                .show();
+    }
+
+    private void addToWishlist(Content item, String chosenAudio, WishlistViewModel wishlistViewModel) {
+
+        // IMPORTANT : on crée une COPIE pour éviter de modifier l’objet de la liste de recherche
+        Content toSave = new Content(
+                item.getTitle(),
+                item.getLinkToImage(),
+                new ArrayList<>(item.getLinkToDownload()),
+                new ArrayList<>(item.getSoundtrack()),
+                item.GetDate()
+        );
+
+        toSave.setSelectedAudio(chosenAudio);
+
+        wishlistViewModel.add(toSave);
+
+        android.widget.Toast.makeText(
+                requireContext(),
+                item.getTitle() + " (" + chosenAudio + ") enregistré dans la wishlist",
+                android.widget.Toast.LENGTH_SHORT
+        ).show();
+    }
+
+
+
 
 
 
