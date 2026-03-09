@@ -67,28 +67,30 @@ public class SearchPageFragment extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Initialiser le View Binding
         binding = FragmentSearchPageBinding.inflate(inflater, container, false);
 
-        // Configurer le RecyclerView avec un adapter initialisé à vide
-        binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // ViewModel
+        WishlistViewModel wishlistViewModel =
+                new ViewModelProvider(requireActivity()).get(WishlistViewModel.class);
+
+        // RecyclerView
+        binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        // Adapter (UNE seule fois)
         adapter = new ContentAdapter(content -> {
-            // action quand on clique sur "+"
-            // ex: ajout à la wishlist
+            showAudioChoiceDialog(content, wishlistViewModel);
         });
-        binding.searchRecyclerView.setAdapter(adapter);
 
         binding.searchRecyclerView.setAdapter(adapter);
-        binding.searchRecyclerView.setAdapter(adapter);
 
-        // Charger les données depuis l'API au démarrage
+        // Charger les données au démarrage
         if (searchQuery != null && contentType != null) {
             fetchDataFromAPI(searchQuery, contentType);
         }
 
-
         return binding.getRoot();
     }
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -121,22 +123,6 @@ public class SearchPageFragment extends Fragment
 
             // Recharger les données depuis l'API avec les nouvelles valeurs
             fetchDataFromAPI(searchContent, type.toString());
-        });
-        /*WishlistViewModel wishlistViewModel = new ViewModelProvider(requireActivity())
-                .get(WishlistViewModel.class);
-
-        adapter = new ContentAdapter(content -> {
-            wishlistViewModel.add(content);
-        });*/
-
-
-        binding.searchRecyclerView.setAdapter(adapter);
-
-        WishlistViewModel wishlistViewModel =
-                new ViewModelProvider(requireActivity()).get(WishlistViewModel.class);
-
-        adapter = new ContentAdapter(content -> {
-            showAudioChoiceDialog(content, wishlistViewModel);
         });
 
     }

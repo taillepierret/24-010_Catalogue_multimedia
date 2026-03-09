@@ -141,4 +141,18 @@ public class MainActivity extends AppCompatActivity {
         ((SearchPageFragment) searchFragment).performSearchFromOutside(query);
     }
 
+    public void openSearchWithQuery(String query, String selectedContentType) {
+        SearchPageFragment fragment = new SearchPageFragment();
+        Bundle args = new Bundle();
+        args.putString("searchContent", query);
+        args.putString("selectedContentType", selectedContentType);
+        fragment.setArguments(args);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container_view, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
 }

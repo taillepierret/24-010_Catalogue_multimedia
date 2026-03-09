@@ -22,6 +22,7 @@ import com.example.cataloguemultimedia.data.ContentJsonParser;
 import com.example.cataloguemultimedia.data.Content_type;
 import com.example.cataloguemultimedia.databinding.FragmentWelcomeBinding;
 
+
 import org.json.JSONArray;
 
 import java.util.ArrayList;
@@ -115,10 +116,15 @@ public class WelcomeFragment extends Fragment {
         // 3) Click (une seule fois, pas de setOnClickListener dans setOnClickListener)
         binding.searchButton.setOnClickListener(v -> {
             String searchContent = binding.searchEditText.getText().toString().trim();
+            String selectedType = binding.contentTypeSpinner.getSelectedItem().toString();
+
             if (!searchContent.isEmpty()) {
-                ((MainActivity) requireActivity()).openSearchWithQuery(searchContent);
+                ((MainActivity) requireActivity()).openSearchWithQuery(searchContent, selectedType);
             }
         });
+
+
+        binding.contentTypeSpinner.setAdapter(adapter);
     }
 
     private void getZtLinkFromAPI(){
