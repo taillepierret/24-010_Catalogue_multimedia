@@ -138,10 +138,11 @@ public class MainActivity extends AppCompatActivity {
         activeFragment = searchFragment;
         toolbar.setTitle("Recherche");
 
-        ((SearchPageFragment) searchFragment).performSearchFromOutside(query);
+        //((SearchPageFragment) searchFragment).performSearchFromOutside(query);
     }
 
-    public void openSearchWithQuery(String query, String selectedContentType) {
+    public void openSearchWithQuery(String query, String selectedContentType)
+    {
         SearchPageFragment fragment = new SearchPageFragment();
         Bundle args = new Bundle();
         args.putString("searchContent", query);

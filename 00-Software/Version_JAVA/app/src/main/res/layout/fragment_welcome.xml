@@ -72,6 +72,14 @@
 
     </LinearLayout>
 
+    <!-- Sablier -->
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <!-- Espace bas = 2/3 -->
     <Space
         android:layout_width="match_parent"
