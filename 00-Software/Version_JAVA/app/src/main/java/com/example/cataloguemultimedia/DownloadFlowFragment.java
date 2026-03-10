@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cataloguemultimedia.data.Content;
+import com.example.cataloguemultimedia.LinkUtils;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -65,7 +66,10 @@ public class DownloadFlowFragment extends Fragment {
         openLinkButton.setOnClickListener(btn -> {
             String link = getCurrentLink();
             if (link == null) return;
-            IntentUtils.openInBrowser(requireContext(), link);
+            String url = LinkUtils.toAbsoluteUrl(link);
+            IntentUtils.openInBrowser(requireContext(), url);
+
+
         });
 
         saveClipboardButton.setOnClickListener(btn -> {
