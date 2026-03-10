@@ -3,38 +3,27 @@ package com.example.cataloguemultimedia;
 import android.os.Bundle;
 
 import androidx.lifecycle.ViewModelProvider;
-import com.example.cataloguemultimedia.viewmodel.WishlistViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.example.cataloguemultimedia.data.ContentAdapter;
 import com.example.cataloguemultimedia.data.ContentJsonParser;
-import com.example.cataloguemultimedia.data.Soundtrack;
 import com.example.cataloguemultimedia.data.Content;
 import com.example.cataloguemultimedia.data.Content_type;
 import com.example.cataloguemultimedia.databinding.FragmentSearchPageBinding;
 
 import org.json.JSONArray;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import com.example.cataloguemultimedia.R;
 
 public class SearchPageFragment extends Fragment
 {
@@ -43,6 +32,11 @@ public class SearchPageFragment extends Fragment
     private String contentType;
     private @NonNull FragmentSearchPageBinding binding;
     private ContentAdapter adapter;
+
+    private String pendingQuery = null;
+    private String pendingType  = null;
+    private ArrayAdapter<String> spinnerAdapter; // pour pouvoir setSelection depuis l'extérieur
+
 
     public SearchPageFragment()
     {
@@ -70,8 +64,8 @@ public class SearchPageFragment extends Fragment
         binding = FragmentSearchPageBinding.inflate(inflater, container, false);
 
         // ViewModel
-        WishlistViewModel wishlistViewModel =
-                new ViewModelProvider(requireActivity()).get(WishlistViewModel.class);
+        DownloadFlowFragment.WishlistViewModel wishlistViewModel =
+                new ViewModelProvider(requireActivity()).get(DownloadFlowFragment.WishlistViewModel.class);
 
         // RecyclerView
         binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -96,13 +90,13 @@ public class SearchPageFragment extends Fragment
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Configurer le Spinner pour les types de contenu
+        // ✅ 1) initialise l'adapter (AVANT de l'utiliser)
         String[] contentTypes = new String[Content_type.values().length];
         for (int i = 0; i < Content_type.values().length; i++) {
             contentTypes[i] = Content_type.values()[i].name();
         }
 
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+        spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
                 contentTypes
@@ -111,8 +105,13 @@ public class SearchPageFragment extends Fragment
         binding.contentTypeSpinner.setAdapter(spinnerAdapter);
 
         // Restaurer les valeurs précédemment sélectionnées
-        binding.searchEditText.setText(searchQuery);
-        binding.contentTypeSpinner.setSelection(spinnerAdapter.getPosition(contentType));
+        binding.searchEditText.setText(searchQuery != null ? searchQuery : "");
+
+        if (contentType != null && spinnerAdapter != null) {
+            int pos = spinnerAdapter.getPosition(contentType);
+            if (pos >= 0) binding.contentTypeSpinner.setSelection(pos);
+        }
+
 
         // Bouton de recherche
         binding.searchButton.setOnClickListener(v -> {
@@ -124,6 +123,13 @@ public class SearchPageFragment extends Fragment
             // Recharger les données depuis l'API avec les nouvelles valeurs
             fetchDataFromAPI(searchContent, type.toString());
         });
+
+        // Si une recherche a été demandée avant que la vue/spinner soit prêt
+        if (pendingQuery != null || pendingType != null) {
+            applyExternalSearch(pendingQuery, pendingType);
+            pendingQuery = null;
+            pendingType  = null;
+        }
 
     }
 
@@ -158,23 +164,46 @@ public class SearchPageFragment extends Fragment
         });
     }
 
-    public void performSearchFromOutside(String query)
-    {
-        if (!isAdded() || binding == null) return;
-
-        binding.searchEditText.setText(query);
-
-        // On récupère le type seulement s’il existe
-        String selectedType = "ALL"; // valeur par défaut sûre
-
-        if (binding.contentTypeSpinner.getSelectedItem() != null) {
-            selectedType = binding.contentTypeSpinner.getSelectedItem().toString();
-        }
-
-        fetchDataFromAPI(query, selectedType);
+    public void performSearchFromOutside(String query) {
+        performSearchFromOutside(query, null);
     }
 
-    private void showAudioChoiceDialog(Content item, WishlistViewModel wishlistViewModel) {
+    public void performSearchFromOutside(String query, String selectedContentType) {
+        // Si la vue n’est pas prête, on stocke et on appliquera après (dans onViewCreated)
+        if (!isAdded() || binding == null) {
+            pendingQuery = query;
+            pendingType  = selectedContentType;
+            return;
+        }
+
+        applyExternalSearch(query, selectedContentType);
+    }
+
+    private void applyExternalSearch(String query, String selectedContentType) {
+        if (!isAdded() || binding == null) return;
+
+        String q = (query != null) ? query : "";
+        binding.searchEditText.setText(q);
+
+        // Type: si on nous en donne un, on le force dans le spinner
+        if (selectedContentType != null && spinnerAdapter != null) {
+            int pos = spinnerAdapter.getPosition(selectedContentType);
+            if (pos >= 0) binding.contentTypeSpinner.setSelection(pos);
+        }
+
+        // Type final utilisé pour l’API (spinner si possible, sinon ALL)
+        String typeToUse = "ALL";
+        if (binding.contentTypeSpinner.getSelectedItem() != null) {
+            typeToUse = binding.contentTypeSpinner.getSelectedItem().toString();
+        } else if (selectedContentType != null) {
+            typeToUse = selectedContentType;
+        }
+
+        fetchDataFromAPI(q, typeToUse);
+    }
+
+
+    private void showAudioChoiceDialog(Content item, DownloadFlowFragment.WishlistViewModel wishlistViewModel) {
 
         ArrayList<String> audios = item.getSoundtrack(); // ton getter existe déjà
 
@@ -205,7 +234,7 @@ public class SearchPageFragment extends Fragment
                 .show();
     }
 
-    private void addToWishlist(Content item, String chosenAudio, WishlistViewModel wishlistViewModel) {
+    private void addToWishlist(Content item, String chosenAudio, DownloadFlowFragment.WishlistViewModel wishlistViewModel) {
 
         // IMPORTANT : on crée une COPIE pour éviter de modifier l’objet de la liste de recherche
         Content toSave = new Content(

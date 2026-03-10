@@ -141,19 +141,23 @@ public class MainActivity extends AppCompatActivity {
         //((SearchPageFragment) searchFragment).performSearchFromOutside(query);
     }
 
-    public void openSearchWithQuery(String query, String selectedContentType)
-    {
-        SearchPageFragment fragment = new SearchPageFragment();
-        Bundle args = new Bundle();
-        args.putString("searchContent", query);
-        args.putString("selectedContentType", selectedContentType);
-        fragment.setArguments(args);
+    public void openSearchWithQuery(String query, String selectedContentType) {
 
+        // 1) Donner la requête au fragment Search déjà présent
+        ((SearchPageFragment) searchFragment).performSearchFromOutside(query, selectedContentType);
+
+        // 2) Naviguer en hide/show (comme le drawer)
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container_view, fragment)
-                .addToBackStack(null)
+                .hide(activeFragment)
+                .show(searchFragment)
                 .commit();
+
+        activeFragment = searchFragment;
+        toolbar.setTitle("Recherche");
+
+        // Optionnel : fermer le drawer si besoin
+        drawerLayout.closeDrawer(GravityCompat.START);
     }
 
 }

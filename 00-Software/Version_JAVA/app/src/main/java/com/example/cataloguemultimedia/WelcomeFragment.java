@@ -4,6 +4,8 @@ import static com.example.cataloguemultimedia.API_request.getZtLink;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -44,18 +46,14 @@ public class WelcomeFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] contentTypes = new String[Content_type.values().length];
-        for (int i = 0; i < Content_type.values().length; i++) {
-            contentTypes[i] = Content_type.values()[i].name();
-        }
-
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+        // Spinner: on met directement l'enum (toString() => displayName)
+        ArrayAdapter<Content_type> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
-                contentTypes
+                Content_type.values()
         );
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.contentTypeSpinner.setAdapter(spinnerAdapter);
@@ -71,14 +69,20 @@ public class WelcomeFragment extends Fragment {
 
         binding.searchButton.setOnClickListener(v -> {
             String searchContent = binding.searchEditText.getText().toString().trim();
-            String selectedType = binding.contentTypeSpinner.getSelectedItem().toString();
+
+            // Ici tu récupères l'enum (propre)
+            Content_type selectedType = (Content_type) binding.contentTypeSpinner.getSelectedItem();
 
             if (!searchContent.isEmpty()) {
-                ((MainActivity) requireActivity()).openSearchWithQuery(searchContent, selectedType);
+                // Si ta méthode attend un String: envoie displayName via toString()
+                ((MainActivity) requireActivity()).openSearchWithQuery(searchContent, selectedType.toString());
+
+                // OU (mieux) change openSearchWithQuery pour prendre Content_type directement
+                // ((MainActivity) requireActivity()).openSearchWithQuery(searchContent, selectedType);
             }
         });
-
     }
+
 
     @Override
     public void onDestroyView() {

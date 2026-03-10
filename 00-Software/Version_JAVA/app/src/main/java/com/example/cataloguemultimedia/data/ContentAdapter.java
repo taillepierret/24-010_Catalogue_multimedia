@@ -23,6 +23,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
 
     private final List<Content> resultList = new ArrayList<>();
     private final OnAddClickListener addClickListener;
+    private final List<Content> items = new ArrayList<>();
 
     public ContentAdapter(OnAddClickListener addClickListener) {
         this.addClickListener = addClickListener;
@@ -33,6 +34,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
         resultList.clear();
         if (newList != null) resultList.addAll(newList);
         notifyDataSetChanged();
+        setItems(newList);
     }
 
     @NonNull
@@ -60,6 +62,25 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
 
 
         // TODO: charger l'image item.getLinkToImage() avec Glide/Picasso si tu veux
+    }
+
+    public List<Content> getItemsSnapshot() {
+        return new ArrayList<>(items);
+    }
+
+    public void setItems(List<Content> newItems) {
+        items.clear();
+        if (newItems != null) items.addAll(newItems);
+        notifyDataSetChanged();
+    }
+
+    public void moveItem(int from, int to) {
+        if (from < 0 || to < 0 || from >= items.size() || to >= items.size()) return;
+        if (from == to) return;
+
+        Content moved = items.remove(from);
+        items.add(to, moved);
+        notifyItemMoved(from, to);
     }
 
     @Override
